@@ -13,7 +13,7 @@ def get_flights(df,bags):
     output = {}
 
     for start in locs:
-        print(start)
+        #print(start)
         flights = []
 
         # create list of all flights from start destination

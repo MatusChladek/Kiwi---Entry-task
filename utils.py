@@ -44,10 +44,10 @@ def get_subsets(route_list):
     return output
 
 # delete routes with repeating locs
-def del_repeats(df,routes,bags):
+# delete routes with repeating locs
+def del_repeats(df,routes,bags,start_end_equal = False):
     output = []
     for route in routes:
-
         temp = []
         df1 = df.loc[df.bags_allowed >= bags,:]
         # set proper unique identifier here brah
@@ -64,10 +64,15 @@ def del_repeats(df,routes,bags):
     #print(output)
 
     # only those where all are unique or all unique exept for start & end
-    indexer = [counter for counter,i in enumerate(output) if (len(set(i)) == len(i)) or ((i[0] == i[-1]) and (len(set(i))+1 == len(i)))]
-    output = [i for _,i in enumerate(output) if (len(set(i)) == len(i)) or ((i[0] == i[-1]) and (len(set(i))+1 == len(i)))]
 
-    #print('skap')
+    # in case start and end has to be same
+    if start_end_equal:
+        indexer = [counter for counter,i in enumerate(output) if (len(set(i)) == len(i)) or ((i[0] == i[-1]) and (len(set(i))+1 == len(i)))]
+        output = [i for _,i in enumerate(output) if (len(set(i)) == len(i)) or ((i[0] == i[-1]) and (len(set(i))+1 == len(i)))]
+    else:
+        indexer = [counter for counter,i in enumerate(output) if ((i[0] == i[-1]) and (len(set(i))+1 == len(i)))]
+        output = [i for _,i in enumerate(output) if ((i[0] == i[-1]) and (len(set(i))+1 == len(i)))]
+        
     #print(indexer)
     #print(output)
     return indexer
@@ -96,11 +101,12 @@ def map_index(df,routes,locs_only=False):
             temp.append(route[-1])
             output.append(temp)
 
-    for route in routes:
-        temp = []
-        for item in route[:-1]:
-            temp.append(df.loc[item,:])
-        temp.append(route[-1])
-        output.append(temp)
+    else:
+        for route in routes:
+            temp = []
+            for item in route[:-1]:
+                temp.append(df.loc[item,:])
+            temp.append(route[-1])
+            output.append(temp)
 
     return output
