@@ -4,7 +4,7 @@ def create_flights(df,flights,bags):
 
     df1 = df.loc[df.bags_allowed >= bags,:]
     # set proper unique identifier here brah
-    df1 = df1.set_index('flight_number')
+    #df1 = df1.set_index('flight_number')
 
     for counter,route in enumerate(flights):
         #print(route)
@@ -51,7 +51,7 @@ def del_repeats(df,routes,bags):
         temp = []
         df1 = df.loc[df.bags_allowed >= bags,:]
         # set proper unique identifier here brah
-        df1 = df1.set_index('flight_number')
+        #df1 = df1.set_index('flight_number')
 
         # create source location
         temp.append(df1.loc[route[0],:].source)
@@ -75,7 +75,7 @@ def del_repeats(df,routes,bags):
 # compute price for trips
 def add_price(df,routes,bags):
     output = []
-    df = df.set_index('flight_number')
+    #df = df.set_index('flight_number')
 
     for route in routes:
         price = np.sum(df.loc[route,:].price + df.loc[route,:].bag_price*bags)

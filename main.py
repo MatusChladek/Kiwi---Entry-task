@@ -22,7 +22,7 @@ for start in locs:
     df_start = df.loc[df.source == start,:]
     #print(df_start)
     df_start = df_start.loc[df_start.bags_allowed >= bags,:]
-    for item in df_start['flight_number']:
+    for item in df_start.index:
         flights.append([item])
 
     flights = np.array(flights)
