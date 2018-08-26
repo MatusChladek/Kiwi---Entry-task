@@ -47,4 +47,7 @@ for start in locs:
     # add price to the end of each trip
     final = add_price(df,uniques,bags)
 
+    # map it to create proper trip (I think that storing just ID is best way for further processing)
+    #final = map_index(df,final)
+
     output[start] = final
