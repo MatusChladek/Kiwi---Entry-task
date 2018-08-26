@@ -45,6 +45,7 @@ def get_subsets(route_list):
 
 # delete routes with repeating locs
 # delete routes with repeating locs
+# delete routes with repeating locs
 def del_repeats(df,routes,bags,start_end_equal = False):
     output = []
     for route in routes:
@@ -56,7 +57,7 @@ def del_repeats(df,routes,bags,start_end_equal = False):
         # create source location
         temp.append(df1.loc[route[0],:].source)
         # append destinations to source etc
-        for item in route:
+        for item in route:     
             temp.append(df1.loc[item,:].destination)
 
         output.append(temp)
@@ -67,12 +68,12 @@ def del_repeats(df,routes,bags,start_end_equal = False):
 
     # in case start and end has to be same
     if start_end_equal:
-        indexer = [counter for counter,i in enumerate(output) if (len(set(i)) == len(i)) or ((i[0] == i[-1]) and (len(set(i))+1 == len(i)))]
-        output = [i for _,i in enumerate(output) if (len(set(i)) == len(i)) or ((i[0] == i[-1]) and (len(set(i))+1 == len(i)))]
-    else:
         indexer = [counter for counter,i in enumerate(output) if ((i[0] == i[-1]) and (len(set(i))+1 == len(i)))]
         output = [i for _,i in enumerate(output) if ((i[0] == i[-1]) and (len(set(i))+1 == len(i)))]
-        
+    else:
+        indexer = [counter for counter,i in enumerate(output) if (len(set(i)) == len(i)) or ((i[0] == i[-1]) and (len(set(i))+1 == len(i)))]
+        output = [i for _,i in enumerate(output) if (len(set(i)) == len(i)) or ((i[0] == i[-1]) and (len(set(i))+1 == len(i)))]
+
     #print(indexer)
     #print(output)
     return indexer
