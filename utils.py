@@ -82,15 +82,24 @@ def add_price(df,routes,bags):
         output.append(np.append(route,price))
     return output
 
-def map_index(df,routes):
+def map_index(df,routes,locs_only=False):
     output = []
+
+    if locs_only:
+        for route in routes:
+            temp = []
+            # create source location
+            temp.append(df.loc[route[0],:].source)
+            # append destinations to source etc
+            for item in route[:-1]:
+                temp.append(df.loc[item,:].destination)
+            temp.append(route[-1])
+            output.append(temp)
+
     for route in routes:
         temp = []
-        # create source location
-        temp.append(df1.loc[route[0],:].source)
-        # append destinations to source etc
         for item in route[:-1]:
-            temp.append(df1.loc[item,:].destination)
+            temp.append(df.loc[item,:])
         temp.append(route[-1])
         output.append(temp)
 
