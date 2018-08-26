@@ -24,7 +24,6 @@ def create_flights(df,flights,bags):
                 output.append(new_route)
         else:
             output.append(route)
-    #print(count_check)
 
     # do until no new flights were found for all current trips
     if count_check != 0 :
