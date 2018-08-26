@@ -52,7 +52,25 @@ def get_flights(df,bags):
         output[start] = final
     return output
 
-df = pd.read_csv('data1.csv',parse_dates=True)
+# in case we want to do it directly from file
+#df = pd.read_csv('data1.csv',parse_dates=True)
+
+# read console
+import csv
+import sys
+
+f = sys.stdin.read().splitlines()
+lines = csv.reader(f, delimiter=';')
+lines = list(lines)
+column_names = lines[0]
+rows = lines[1:]
+df = pd.DataFrame(columns=column_names)
+for i in range(len(rows)):
+    df.loc[i] = rows[i]
+
+print(df)
+
+
 
 bags_0 = get_flights(df,0)
 print("All routes for passengers without a bag: ",bags_0)
