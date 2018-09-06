@@ -2,8 +2,8 @@ import pandas as pd
 from datetime import datetime
 import numpy as np
 
-%reload_ext autoreload
-%autoreload 2
+#%reload_ext autoreload
+#%autoreload 2
 from utils import *
 
 def get_flights(df,bags):
