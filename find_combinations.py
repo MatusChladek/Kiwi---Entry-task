@@ -67,7 +67,7 @@ for i in range(len(rows)):
     df.loc[i] = rows[i]
 df.price = df.price.astype(int)
 df.bags_allowed = df.bags_allowed.astype(int)
-df.bags_price = df.bag_price.astype(int)
+df.bag_price = df.bag_price.astype(int)
 
 
 
