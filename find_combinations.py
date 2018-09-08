@@ -57,12 +57,14 @@ def get_flights(df,bags):
 import csv
 import sys
 
+# 
 f = sys.stdin.read().splitlines()
 lines = csv.reader(f)
 lines = list(lines)
 column_names = lines[0]
 rows = lines[1:]
 df = pd.DataFrame(columns=column_names)
+
 for i in range(len(rows)):
     df.loc[i] = rows[i]
 df.price = df.price.astype(int)
