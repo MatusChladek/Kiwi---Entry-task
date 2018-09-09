@@ -8,6 +8,8 @@ requests = "*"
 requests-html = "*"
 redis = "*"
 flask = "*"
+flask-wtf = "*"
+"psycopg2" = "*"
 
 [dev-packages]
 pylint = "*"

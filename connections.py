@@ -6,7 +6,7 @@ s = HTMLSession()
 
 def get_destinations() -> dict:
 
-
+    
     r = s.get("https://www.alsa.com/en/web/bus/home", verify = False)
     r = s.get(
         "https://www.alsa.com/en/c/portal/layout?p_l_id=70167&p_p_cacheability=cacheLevelPage&p_p_id=JourneySearchPortlet_WAR_Alsaportlet&p_p_lifecycle=2&p_p_resource_id=JsonGetOrigins&locationMode=1&_=1536402460713",
@@ -23,7 +23,7 @@ def get_route(src: dict, dst: dict, when: datetime) -> dict:
         "p_p_state": "normal",
         "passengerType-4": "0",
         "_returnDate": "",
-        "originStationNameId": src,
+        "originStationNameId": src.get("name"),
         "destinationStationNameId": dst.get("name"),
         "originStationId": src.get("id"),
         "destinationStationId": dst.get("id"),

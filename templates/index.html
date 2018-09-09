@@ -1,0 +1,18 @@
+<doctype html>
+<head>
+    <title>Flask Input</title>
+</head>
+    
+<h2>Flask Input</h2>
+
+{% from "_formhelpers.html" import render_field %}
+<form method=post>
+  <dl>
+    {{ render_field(form.src) }}
+    <p>
+    {{ render_field(form.dst) }}
+    <p>
+    {{render_field(form.date_from)}}
+  </dl>
+  <p><input type=submit value=Search>
+</form>
