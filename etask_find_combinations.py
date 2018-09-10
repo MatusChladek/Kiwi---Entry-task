@@ -4,7 +4,7 @@ import numpy as np
 
 #%reload_ext autoreload
 #%autoreload 2
-from utils import *
+from etask_utils import *
 
 def get_flights(df,bags):
     df.departure = pd.to_datetime(df.departure,format='%Y-%m-%dT%H:%M:%S')
@@ -51,7 +51,7 @@ def get_flights(df,bags):
     return output
 
 # 1) in case we want to do it directly from file
-# df = pd.read_csv('data1.csv',parse_dates=True)
+# df = pd.read_csv('etask_data1.csv',parse_dates=True)
 
 # 2) read console
 import csv

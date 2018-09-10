@@ -2,11 +2,9 @@ from requests_html import HTMLSession
 from datetime import datetime
 
 s = HTMLSession()
-
-
 def get_destinations() -> dict:
 
-    
+    # verify arg can be excluded
     r = s.get("https://www.alsa.com/en/web/bus/home", verify = False)
     r = s.get(
         "https://www.alsa.com/en/c/portal/layout?p_l_id=70167&p_p_cacheability=cacheLevelPage&p_p_id=JourneySearchPortlet_WAR_Alsaportlet&p_p_lifecycle=2&p_p_resource_id=JsonGetOrigins&locationMode=1&_=1536402460713",

@@ -1,3 +1,3 @@
 # Kiwi - Entry task
 
-My solution to Entry Task for Python weekend in Barcelona organized by Kiwi.com
+Repository contains my solution to Entry Task for Kiwi weekend in Barcelona and project created during the actual weekend.
